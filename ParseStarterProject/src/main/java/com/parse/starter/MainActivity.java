@@ -9,19 +9,35 @@
 package com.parse.starter;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.parse.ParseAnalytics;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity {
+
+    private static final String LOG_TAG = "LOG_TAG";
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    public FragmentManager fragmentManager;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+      agregarToolbar();
+      setUpDrawer();
+
+
+
+
 
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }

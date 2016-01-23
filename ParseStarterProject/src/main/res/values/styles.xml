@@ -1,16 +1,17 @@
-<!--
-  ~ Copyright (c) 2015-present, Parse, LLC.
-  ~ All rights reserved.
-  ~
-  ~ This source code is licensed under the BSD-style license found in the
-  ~ LICENSE file in the root directory of this source tree. An additional grant
-  ~ of patent rights can be found in the PATENTS file in the same directory.
-  -->
-<resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-    </style>
 
-</resources>
+    <resources>
+
+        <style name="AppTheme" parent="Base.AppTheme" />
+
+        <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+            <item name="colorPrimary">@color/primaryColor</item>
+            <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+            <item name="colorAccent">@color/accentColor</item>
+
+            <item name="android:windowBackground">@color/window_background</item>
+        </style>
+
+        <style name="Theme.ConNavigationDrawer" parent="Base.AppTheme"/>
+    </resources>
+
