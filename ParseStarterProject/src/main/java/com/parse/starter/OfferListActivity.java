@@ -15,8 +15,6 @@ public class OfferListActivity extends BaseActivity {
 
     private static final String LOG_TAG = "LOGTRACE";
 
-    RecyclerViewAdapter recyclerViewAdapter;
-    RecyclerView recyclerView;
 
 
     @Override

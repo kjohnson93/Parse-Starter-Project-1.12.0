@@ -54,7 +54,7 @@ public class CreateOfferActivity extends BaseActivity {
         public void onDateSet(DatePicker view, int year, int month, int day) {
 
 
-                SelectedDateView.setText((month + 1) + "-" + day + "-" + year);
+            SelectedDateView.setText((month + 1) + "-" + day + "-" + year);
 
         }
     }
@@ -80,7 +80,7 @@ public class CreateOfferActivity extends BaseActivity {
             Log.d(LOG_TAG, "Date selected with view " + view);
 
 
-                SelectedDateView2.setText((month + 1) + "-" + day + "-" + year);
+            SelectedDateView2.setText((month + 1) + "-" + day + "-" + year);
 
 
         }
@@ -113,11 +113,6 @@ public class CreateOfferActivity extends BaseActivity {
         });
 
 
-
-
-
-
-
     }
 
     private void uploadData() {
@@ -125,7 +120,7 @@ public class CreateOfferActivity extends BaseActivity {
         Information info = new Information();
 
         EditText edtTitle, edtCompany, edtDescription;
-        TextView  tvwStartDate, tvwEndDate;
+        TextView tvwStartDate, tvwEndDate;
         Spinner spCategory;
 
         edtTitle = (EditText) findViewById(R.id.editTextTitle); //string
@@ -137,38 +132,18 @@ public class CreateOfferActivity extends BaseActivity {
 
         spCategory = (Spinner) findViewById(R.id.spinner); //string or int
 
-        info.title = edtTitle.getText().toString();
-        info.company = edtCompany.getText().toString();
-        info.description = edtDescription.getText().toString();
+        info.title = edtTitle.getText().toString().trim();
+        info.company = edtCompany.getText().toString().trim();
+        info.description = edtDescription.getText().toString().trim();
         info.category = spCategory.getSelectedItemPosition();
 
-        if (tvwStartDate!= null) {
-            info.dateStart = tvwStartDate.getText().toString();
-
-
-            /*
-
-            DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-            Date startDate = null;
-            try {
-                startDate = df.parse(dataStart);
-                String newDateString = df.format(startDate);
-                System.out.println(newDateString);
-
-            } catch (java.text.ParseException e) {
-                e.printStackTrace();
-            }
-
-            Log.d(LOG_TAG, "Data string stard passed is: " + dataStart);
-            */
-
-
-
+        if (tvwStartDate != null) {
+            info.dateStart = tvwStartDate.getText().toString().trim();
         }
 
-        if (tvwEndDate !=null) {
+        if (tvwEndDate != null) {
 
-            info.dateEnd = tvwEndDate.getText().toString();
+            info.dateEnd = tvwEndDate.getText().toString().trim();
 
         }
 
@@ -210,41 +185,71 @@ public class CreateOfferActivity extends BaseActivity {
         data.add(info.dateStart);
         data.add(info.dateEnd);
 
-       // data.add(info);
+        // data.add(info);
 
         //
         jobOffer.put("title", info.title);
         jobOffer.put("company", info.company);
         jobOffer.put("category", info.category);
         jobOffer.put("description", info.description);
-        jobOffer.put("dataStart", info.dateStart);
+        jobOffer.put("dateStart", info.dateStart);
+        jobOffer.put("dateEnd", info.dateEnd);
         jobOffer.put("test", "blabla");
         //jobOffer.addAllUnique("skillsarray", Arrays.asList(data));
         //jobOffer.put("objecttest", Arrays.asList(info.title, info.company, info.category, info.description, info.dateStart, info.dateEnd)); arrays as list!!!!!!
         jobOffer.put("array", data);
         jobOffer.saveInBackground();
 
-
         /*
-        ParseObject jobOffer = new ParseObject("JobOffer");
-       );
-        jobOffer.put("dataEnd", info.dateEnd);
-        jobOffer.saveInBackground();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("JobOffer");
+        query.whereEqualTo("dataStart" ,"Start Date");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> scoreList, ParseException e) {
+                if (e == null) {
+                    Log.d(LOG_TAG, "Retrieved " + scoreList.size() + " scores");
 
 
 
 
+                    //Log.d(LOG_TAG, "Printing scoreList: " +  scoreList.get(0).getString("company"));
+                } else {
+                    Log.d(LOG_TAG, "Error: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });*/
+
+/*
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("JobOffer");
+        query.whereExists("category");
+        query.countInBackground(new CountCallback() {
+            public void done(int count, ParseException e) {
+                if (e == null) {
+                    // The count request succeeded. Run the query multiple times using the query count
+                    int numQueries = (int) Math.ceil(count / 1000); //Gives you how many queries to run
+                    int l = 0;
+
+                    for(int skipNum = 0; l < numQueries; l++){
+                        ParseQuery<ParseObject> query = ParseQuery.getQuery("JobOffer");
+                        query.whereExists("category");
+                        query.setLimit(skipNum * 1000);
+                        query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> objects, ParseException e) {
+
+                            }
+                            //Run your query as normal here
+
+                        }
+                    }
+                } else {
+                    // The request failed
+                }
+            }*/
 
 
-        String title_sent = jobOffer.getString("title");
-
-
-
-        Log.d(LOG_TAG, "My values are: " + "title:" + title_sent);
-        */
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-
 
 
     }
@@ -275,12 +280,12 @@ public class CreateOfferActivity extends BaseActivity {
     public void showDatePickerDialog(View v) {
 
 
-        if(v.getId()==R.id.buttonDateStart) {
+        if (v.getId() == R.id.buttonDateStart) {
             DialogFragment newFragment = new DatePickerFragment();
             newFragment.show(getSupportFragmentManager(), "Start datePicker");
         }
 
-        if(v.getId()==R.id.buttonDateEnd) {
+        if (v.getId() == R.id.buttonDateEnd) {
             DialogFragment newFragmentEnd = new DatePickerFragmentEnd();
             newFragmentEnd.show(getSupportFragmentManager(), "End datePicker");
         }

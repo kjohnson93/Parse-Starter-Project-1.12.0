@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
@@ -31,25 +32,51 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        return null;
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+
+        View view = inflater.inflate(R.layout.custom_row, parent, false);
+
+        MyViewHolder holder = new MyViewHolder(view);
+
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewAdapter.MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(RecyclerViewAdapter.MyViewHolder myViewHolder, int position) {
+
+        Information current = data.get(position);
+
+        //on this part i set the content to the recyclerview item
+        myViewHolder.textViewTitle.setText(current.title);
+        //holder.imageView2.setImageResource(current.iconid2);
+        myViewHolder.textViewCompany.setText(current.company);
 
     }
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
     }
 
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView textViewTitle, textViewCompany;
+
+
         public MyViewHolder(View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(this);
+
+            textViewTitle = (TextView) itemView.findViewById(R.id.textTitle);
+            textViewCompany = (TextView) itemView.findViewById(R.id.textViewCompany);
+        }
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 }
