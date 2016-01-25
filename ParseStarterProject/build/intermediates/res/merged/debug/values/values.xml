@@ -660,6 +660,7 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_create_offer">CreateOfferActivity</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_offer_details">OfferDetailsActivity</string>
     <string name="title_activity_offer_list">OfferListActivity</string>
     <string name="title_activity_plan_route">PlanRouteActivity</string>
     <string name="title_create_offer_activity">Create an Offer</string>

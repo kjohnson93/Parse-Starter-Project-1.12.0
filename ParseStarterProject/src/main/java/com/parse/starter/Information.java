@@ -5,18 +5,21 @@ package com.parse.starter;
  */
 public class Information {
 
-    String title, company, description;
+
+    String title;
+    String company;
+    String description;
     //Date dateStart, dateEnd;
     String dateStart, dateEnd;
     int category;
     String id;
 
-    public Information(){
+    public Information() {
 
 
     }
 
-    Information(String id, String title, String company, String description, String dateStart, String dateEnd, int category){
+    Information(String id, String title, String company, String description, String dateStart, String dateEnd, int category) {
 
         this.id = id;
         this.title = title;
@@ -27,5 +30,34 @@ public class Information {
         this.category = category;
 
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+
+    public String getCompany() {
+        return company;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getDateStart() {
+        return dateStart;
+    }
+
+    public String getDateEnd() {
+        return dateEnd;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public String getId() {
+        return id;
     }
 }

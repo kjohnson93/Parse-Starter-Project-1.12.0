@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:10:1-95:12
+ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:10:1-98:12
 	package
 		ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:11:5-32
 		INJECTED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml
@@ -48,7 +48,7 @@ ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProj
 	android:name
 		ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:28:22-77
 application
-ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:30:5-93:19
+ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:30:5-96:19
 MERGED from [com.android.support:appcompat-v7:22.2.0] C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\AndroidManifest.xml:22:5-20
 MERGED from [de.hdodenhof:circleimageview:1.3.0] C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\AndroidManifest.xml:9:5-20
@@ -166,6 +166,12 @@ category#com.parse.starter
 ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:88:17-62
 	android:name
 		ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:88:27-59
+activity#com.parse.starter.OfferDetailsActivity
+ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:92:9-95:20
+	android:label
+		ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:94:13-65
+	android:name
+		ADDED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml:93:13-49
 uses-sdk
 INJECTED from C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:22.2.0] C:\Users\wolf\JOB\Parse\Parse-Starter-Project-1.12.0\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\AndroidManifest.xml:20:5-43

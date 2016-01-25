@@ -52,5 +52,6 @@
     <string name="title_activity_offer_list">OfferListActivity</string>
 
     <string name="date_pick">Pick a date</string>
+    <string name="title_activity_offer_details">OfferDetailsActivity</string>
 
 </resources>

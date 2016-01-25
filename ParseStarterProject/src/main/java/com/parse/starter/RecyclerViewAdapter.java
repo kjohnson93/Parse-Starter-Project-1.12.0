@@ -19,6 +19,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private LayoutInflater inflater;
     List<Information> data = Collections.emptyList(); //On this array i will save the data coming from the fragment
     Context context;
+    private ClickListener clickListener;
+    private static final String LOG_TAG = "LOGTRACE";
 
 
     RecyclerViewAdapter(Context context, List<Information> data) { //to initialize the adapter
@@ -46,10 +48,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Information current = data.get(position);
 
+        Log.d(LOG_TAG, "Data passed is:" + current.company + current.dateStart);
         //on this part i set the content to the recyclerview item
         myViewHolder.textViewTitle.setText(current.title);
         //holder.imageView2.setImageResource(current.iconid2);
         myViewHolder.textViewCompany.setText(current.company);
+
+        myViewHolder.textViewStartDate.setText(current.dateStart);
 
     }
 
@@ -60,9 +65,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
+    public void setClickListener(RecyclerViewAdapter.ClickListener clickListener){
+
+        this.clickListener = clickListener;
+
+
+
+    }
+
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView textViewTitle, textViewCompany;
+        TextView textViewTitle, textViewCompany, textViewStartDate;
 
 
         public MyViewHolder(View itemView) {
@@ -72,12 +85,39 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             textViewTitle = (TextView) itemView.findViewById(R.id.textTitle);
             textViewCompany = (TextView) itemView.findViewById(R.id.textViewCompany);
+            textViewStartDate = (TextView) itemView.findViewById(R.id.textViewStartDate);
         }
 
         @Override
         public void onClick(View v) {
 
+            /*
+
+            Log.d(LOG_TAG, "Clicking this item.. " + getAdapterPosition());
+
+            Information selectedItem = data.get(getAdapterPosition());
+
+            Log.d(LOG_TAG, "DATA from item clicked: " + selectedItem.getTitle() + selectedItem.getCompany());
+
+            Intent intent = new Intent(context, OfferDetailsActivity.class);
+            context.startActivity(intent);*/
+
+            if (clickListener != null){
+
+                Log.d(LOG_TAG, "Entering onClickview normal with pos: " + getAdapterPosition());
+
+                clickListener.itemClicked(v, getAdapterPosition());
+            }
+
         }
     }
+
+
+    public interface ClickListener{ //my interface implemented because following the approach of slidenerd
+
+        public void itemClicked(View view, int position);
+
+    }
+
 }
 

@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by wolf on 1/23/2016.
  */
-public class OfferListFragment extends Fragment {
+public class OfferListFragment extends Fragment implements RecyclerViewAdapter.ClickListener{
 
     private static final String LOG_TAG = "LOGTRACE";
 
@@ -39,7 +39,7 @@ public class OfferListFragment extends Fragment {
     recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_id);
 
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("JobOffer");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("JobOffers");
 
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -64,6 +64,7 @@ public class OfferListFragment extends Fragment {
                     }
 
                     recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), data);
+                    recyclerViewAdapter.setClickListener(OfferListFragment.this);
                     recyclerView.setAdapter(recyclerViewAdapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -89,4 +90,11 @@ public class OfferListFragment extends Fragment {
 
     }
 
+
+    @Override
+    public void itemClicked(View view, int position) {
+
+        Log.d(LOG_TAG, "Entering itemClick from interface with position: " + position);
+
+    }
 }
